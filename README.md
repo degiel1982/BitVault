@@ -33,16 +33,21 @@ The `BitVault` class template has two main parameters:
 #include <Arduino.h>
 #include "BitVault.h"
 
+#define BIT_FLAG_A 0
+#define BIT_FLAG_B 1
+#define BIT_FLAG_C 2
+#define BIT_FLAG_D 3
+
 void setup() {
     Serial.begin(9600);
 
     BitVault<uint8_t> vault;  // Non-atomic version
 
-    vault.set(3, true);       // Set bit 3
-    Serial.println(vault.get(3));  // Prints: 1
+    vault.set(BIT_FLAG_A, true);       // Set bit 3
+    Serial.println(vault.get(BIT_FLAG_A));  // Prints: 1
 
-    vault.set(3, false);      // Clear bit 3
-    Serial.println(vault.get(3));  // Prints: 0
+    vault.set(BIT_FLAG_A, false);      // Clear bit 3
+    Serial.println(vault.get(BIT_FLAG_A));  // Prints: 0
 
     vault.clear_all();        // Clear all bits
 }
@@ -60,16 +65,21 @@ For multi-threaded applications, enable atomic operations:
 #include <Arduino.h>
 #include "BitVault.h"
 
+#define BIT_FLAG_A 0
+#define BIT_FLAG_B 1
+#define BIT_FLAG_C 2
+#define BIT_FLAG_D 3
+
 void setup() {
     Serial.begin(9600);
 
     BitVault<uint32_t, true> atomicVault;  // Atomic version
 
-    atomicVault.set(15, true);             // Set bit 15 atomically
-    Serial.println(atomicVault.get(15));   // Prints: 1
+    atomicVault.set(BIT_FLAG_B, true);             // Set bit 15 atomically
+    Serial.println(atomicVault.get(BIT_FLAG_B));   // Prints: 1
 
-    atomicVault.set(15, false);            // Clear bit 15 atomically
-    Serial.println(atomicVault.get(15));   // Prints: 0
+    atomicVault.set(BIT_FLAG_B, false);            // Clear bit 15 atomically
+    Serial.println(atomicVault.get(BIT_FLAG_B));   // Prints: 0
 
     atomicVault.clear_all();               // Clear all bits atomically
 }
