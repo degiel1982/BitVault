@@ -113,7 +113,7 @@ The class is templated to allow different storage capacities:
 ## Limitations
 
 - **Bit Position Range:** Ensure the bit position (`set` and `get` methods) is within the valid range for the chosen type.
-- **Thread Safety:** The current implementation is not thread-safe. If you need thread safety, consider wrapping calls with appropriate synchronization (e.g., `std::mutex`).
+**- **Thread Safety:** The current implementation is not thread-safe.**
 
 ## License
 
